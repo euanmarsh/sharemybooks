@@ -44,7 +44,7 @@ const Register = () => {
       </span>
 
       <span>
-        <input type="submit" value="Login"/>
+        <input type="submit" value="Register"/>
       </span>
     
     </form>  
