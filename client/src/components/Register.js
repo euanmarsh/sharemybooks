@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../app.css';
+import Axios from 'axios';
 
 const Register = () => {
   const [inputs, setInputs] = useState({});
@@ -12,12 +13,28 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(inputs);
+    console.log(inputs);
+  }
+
+  const addLogin = () => {
+    Axios.post('http://localhost:3000/create', inputs).then(() => {console.log("sent");})
   }
 
   return (
     <form name="Register" onSubmit={handleSubmit}>
       <h1>Register</h1>
+
+      <span>
+        <label> Enter Username:
+        <input type="text" name="username" placeholder="Username..." value={inputs.username || ""} onChange={handleChange}/>
+        </label>
+      </span>
+
+      <span>
+        <label> Enter Password:
+        <input type="password" name="password" value={inputs.password || ""} onChange={handleChange}/>
+        </label>
+      </span>
 
       <span>
         <label> Enter first name:
@@ -44,7 +61,7 @@ const Register = () => {
       </span>
 
       <span>
-        <input type="submit" value="Register"/>
+        <input onClick={addLogin} type="submit" value="Register"/>
       </span>
     
     </form>  
