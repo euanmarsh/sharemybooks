@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import '../app.css';
+import Axios from 'axios';
+import React from 'react';
+import  { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const [inputs, setInputs] = useState({});
+
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -12,7 +17,16 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(inputs);
+  }
+
+  const loginUser = () => {
+    Axios.post('http://localhost:3000/login', inputs).then(response => {
+      console.log(response.data);
+      if(response.data === "success") {
+        navigate("/dashboard");
+      } else {
+        alert(response.data);
+      }})
   }
 
   return (
@@ -32,7 +46,7 @@ const Login = () => {
       </span>
 
       <span>
-        <input type="submit" value="Login"/>
+        <input onClick={loginUser} type="submit" value="Login"/>
       </span>
     
     </form>  

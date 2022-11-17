@@ -16,7 +16,7 @@ const Register = () => {
     console.log(inputs);
   }
 
-  const addLogin = () => {
+  const registerUser = () => {
     Axios.post('http://localhost:3000/create', inputs).then(() => {console.log("sent");})
   }
 
@@ -61,7 +61,7 @@ const Register = () => {
       </span>
 
       <span>
-        <input onClick={addLogin} type="submit" value="Register"/>
+        <input onClick={registerUser} type="submit" value="Register"/>
       </span>
     
     </form>  
