@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import '../app.css';
 import Axios from 'axios';
+import React, {useState } from "react";
 
 const Register = () => {
   const [inputs, setInputs] = useState({});
